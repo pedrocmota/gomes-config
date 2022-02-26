@@ -7,7 +7,113 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.Resizer {
+  background: #000;
+  opacity: 0.2;
+  z-index: 1;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding;
+  background-clip: padding-box;
+}
+ 
+.Resizer:hover {
+  -webkit-transition: all 2s ease;
+  transition: all 2s ease;
+}
+ 
+.Resizer.horizontal {
+  height: 15px;
+  margin: -5px 0;
+  border-top: 5px solid rgba(255, 255, 255, 0);
+  border-bottom: 5px solid rgba(255, 255, 255, 0);
+  cursor: row-resize;
+  width: 100%;
+}
+ 
+.Resizer.horizontal:hover {
+  border-top: 5px solid rgba(0, 0, 0, 0.5);
+  border-bottom: 5px solid rgba(0, 0, 0, 0.5);
+}
+ 
+.Resizer.vertical {
+  width: 11px;
+  margin: 0 -5px;
+  border-left: 5px solid rgba(255, 255, 255, 0);
+  border-right: 5px solid rgba(255, 255, 255, 0);
+  cursor: col-resize;
+}
+ 
+.Resizer.vertical:hover {
+  border-left: 5px solid rgba(0, 0, 0, 0.5);
+  border-right: 5px solid rgba(0, 0, 0, 0.5);
+}
+
+.Resizer.disabled {
+  cursor: not-allowed;
+}
+
+.Resizer.disabled:hover {
+  border-color: transparent;
+}
+
+.splitpanel {
+  width: 100%;
+  height: 100%;
+  background-color: rgb(40, 42, 54);
+}
+
+#raw {
+  width: 100%;
+  height: calc(100% - 50px);
+  background-color: transparent;
+  color: white;
+  border: none;
+}
+
+textarea:focus, input:focus{
+    outline: 0;
+}
+
+textarea {
+  resize: none;
+}
+
+*:focus {
+    outline: 0;
+}
+
+.toolbar {
+  display: inline-flex;
+}
+
+h1 {
+  font-size: 18px;
+  color: white;
+  margin-top: 2px;
+  margin-left: 5px;
+}
+
+select {
+  width: 210px;
+  height: 28px;
+  font-size: 18px;
+  margin-left: 20px;
+}
+
+#character {
+  width: 200px;
+  height: 23px;
+  font-size: 18px;
+  margin-left: 20px;
+}
+
+#final {
+  width: 100%;
+  height: 99%;
+  background-color: transparent;
+  color: white;
+  border: none;
 }
