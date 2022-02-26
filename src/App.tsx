@@ -1,10 +1,9 @@
-import React, {useState, useMemo} from 'react'
+import React, {useState} from 'react'
 import SplitPane from 'react-split-pane'
 import {ProcessRaw, processData} from './process'
 
 const App: React.FunctionComponent = () => {
   const [raw, setRaw] = useState('')
-  const [finalText, setFinalText] = useState('')
   const [server, setServer] = useState('Selecione um servidor')
   const [bank, setBank] = useState('')
 
