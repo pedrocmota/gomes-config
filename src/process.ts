@@ -28,14 +28,14 @@ export const ProcessRaw = (raw: string) => {
   }
 }
 
-export const processData = (accounts: IAccount[], server: string, bank: string) => {
+export const processData = (accounts: IAccount[], server: string, region: string, bank: string) => {
   let str = ''
   accounts.forEach((account) => {
     str += dedent(`
     {
       acc = "${account.login}";
       psw = "${account.password}";
-      regserver = 3;
+      regserver = ${region};
       server = "${server}";
       mailname = "${bank}";
       fin = 0;

@@ -5,17 +5,18 @@ import {ProcessRaw, processData} from './process'
 const App: React.FunctionComponent = () => {
   const [raw, setRaw] = useState('')
   const [server, setServer] = useState('Selecione um servidor')
+  const [region, setRegion] = useState('Selecione uma região')
   const [bank, setBank] = useState('')
 
   const processed = ProcessRaw(raw)
-  const str = processData(processed || [], server, bank)
+  const str = processData(processed || [], server, region, bank)
   return (
     <SplitPane split="horizontal" minSize={50} defaultSize={300}>
       <div className="splitpanel">
         <textarea id="raw" spellCheck="false" onChange={(e) => setRaw(e.target.value)} />
         <div className="toolbar">
           <select value={server} onChange={(e) => setServer(e.target.value)}>
-            <option value="Adrinne">Selecione um servidor</option>
+            <option value="Selecione um servidor">Selecione um servidor</option>
             <option value="Adrinne">Adrinne</option>
             <option value="Agaton">Agaton</option>
             <option value="Akkan">Akkan</option>
@@ -74,6 +75,13 @@ const App: React.FunctionComponent = () => {
             <option value="Yorn">Yorn</option>
             <option value="Zinnervale">Zinnervale</option>
             <option value="Zosma">Zosma</option>
+          </select>
+          <select value={region} onChange={(e) => setRegion(e.target.value)}>
+            <option value="Selecione uma região">Selecione uma região</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
           </select>
           <input
             id="character"
