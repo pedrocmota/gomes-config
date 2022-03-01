@@ -4,19 +4,31 @@ import {ProcessRaw, processData} from './process'
 
 const App: React.FunctionComponent = () => {
   const [raw, setRaw] = useState('')
-  const [server, setServer] = useState('Selecione um servidor')
-  const [region, setRegion] = useState('Selecione uma região')
+  const [china, setChina] = useState('0')
+  const [server, setServer] = useState('')
+  const [region, setRegion] = useState('')
   const [bank, setBank] = useState('')
 
-  const processed = ProcessRaw(raw)
+  const processed = ProcessRaw(raw, china)
   const str = processData(processed || [], server, region, bank)
   return (
     <SplitPane split="horizontal" minSize={50} defaultSize={300}>
       <div className="splitpanel">
-        <textarea id="raw" spellCheck="false" onChange={(e) => setRaw(e.target.value)} />
+        <textarea
+          id="raw"
+          spellCheck="false"
+          onChange={(e) => setRaw(e.target.value)}
+          placeholder="COLE O TEXTO BRUTO DAS CONTAS NESTE CAMPO"
+        />
         <div className="toolbar">
+          <select value={china} onChange={(e) => setChina(e.target.value)}>
+            <option value="0">Selecione um chinês</option>
+            <option value="1">Fataly</option>
+            <option value="2">Chinês 1</option>
+            <option value="3">Chinês 2</option>
+          </select>
           <select value={server} onChange={(e) => setServer(e.target.value)}>
-            <option value="Selecione um servidor">Selecione um servidor</option>
+            <option value="">Selecione um servidor</option>
             <option value="Adrinne">Adrinne</option>
             <option value="Agaton">Agaton</option>
             <option value="Akkan">Akkan</option>
@@ -77,11 +89,12 @@ const App: React.FunctionComponent = () => {
             <option value="Zosma">Zosma</option>
           </select>
           <select value={region} onChange={(e) => setRegion(e.target.value)}>
-            <option value="Selecione uma região">Selecione uma região</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
+            <option value="">Selecione uma região</option>
+            <option value="0">EUROPE WEST</option>
+            <option value="1">EUROPE CENTER</option>
+            <option value="2">AMERICA WEST</option>
+            <option value="3">AMERICA EAST</option>
+            <option value="4">SOUTH AMERICA</option>
           </select>
           <input
             id="character"
@@ -89,11 +102,18 @@ const App: React.FunctionComponent = () => {
             value={bank}
             onChange={(e) => setBank(e.target.value)}
           />
-          <h1>Cole o texto bruto das contas no campo acima</h1>
         </div>
       </div>
       <div className="splitpanel">
-        <textarea id="final" spellCheck="false" readOnly={true} value={str} />
+        <textarea
+          id="final"
+          spellCheck="false"
+          readOnly={true}
+          value={str}
+        />
+        <button id="copy" onClick={() => {
+          navigator.clipboard.writeText(str)
+        }}>Copiar</button>
       </div>
     </SplitPane>
   )
