@@ -113,7 +113,9 @@ const App: React.FunctionComponent = () => {
           value={str}
         />
         <button id="copy" onClick={() => {
-          navigator.clipboard.writeText(str)
+          if (str.length > 0) {
+            navigator.clipboard.writeText(str)
+          }
         }}>Copiar</button>
       </div>
     </SplitPane>
