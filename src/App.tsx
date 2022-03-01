@@ -24,8 +24,9 @@ const App: React.FunctionComponent = () => {
           <select value={china} onChange={(e) => setChina(e.target.value)}>
             <option value="0">Selecione um chinês</option>
             <option value="1">Fataly</option>
-            <option value="2">Chinês 1</option>
-            <option value="3">Chinês 2</option>
+            <option value="2">Chinês 2</option>
+            <option value="3">Chinês 3</option>
+            <option value="4">Chinês 4</option>
           </select>
           <select value={server} onChange={(e) => setServer(e.target.value)}>
             <option value="">Selecione um servidor</option>
