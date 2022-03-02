@@ -76,16 +76,22 @@ body {
 #raw::-webkit-input-placeholder {
   color: #0bf;
   font-size: 24px;
+  padding-left: 8px;
+  padding-top: 8px;
 }
 
 #raw:-ms-input-placeholder {
   color: #0bf;
   font-size: 24px;
+  padding-left: 8px;
+  padding-top: 8px;
 }
 
 #raw::placeholder {
   color: #0bf;
   font-size: 24px;
+  padding-left: 8px;
+  padding-top: 8px;
 }
 
 textarea:focus, input:focus{
@@ -115,7 +121,7 @@ h1 {
 }
 
 select {
-  width: 210px;
+  width: 250px;
   height: 28px;
   font-size: 18px;
   margin-left: 20px;

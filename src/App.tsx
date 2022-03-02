@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import SplitPane from 'react-split-pane'
-import {ProcessRaw, processData} from './process'
+import {Decoder, GeneratePayload} from './Decoders'
 import Regions from './Regions.json'
 
 export interface IRegion {
@@ -9,14 +9,16 @@ export interface IRegion {
   server: string
 }
 
+export type Decoders = '' | 'espaco' | 'chines1' | 'chines2' | 'chines3'
+
 const App: React.FunctionComponent = () => {
   const [raw, setRaw] = useState('')
-  const [china, setChina] = useState('0')
+  const [decoder, setDecoder] = useState<Decoders>('')
   const [region, setRegion] = useState<IRegion>()
   const [bank, setBank] = useState('')
 
-  const processed = ProcessRaw(raw, china)
-  const str = processData(processed || [], region, bank)
+  const accounts = Decoder(raw, decoder)
+  const payload = GeneratePayload(accounts || [], region, bank)
   return (
     <SplitPane split="horizontal" minSize={50} defaultSize={300}>
       <div className="splitpanel">
@@ -27,12 +29,12 @@ const App: React.FunctionComponent = () => {
           placeholder="COLE O TEXTO BRUTO DAS CONTAS NESTE CAMPO"
         />
         <div className="toolbar">
-          <select value={china} onChange={(e) => setChina(e.target.value)}>
-            <option value="0">Selecione um chinês</option>
-            <option value="1">Fataly</option>
-            <option value="2">Chinês 2</option>
-            <option value="3">Chinês 3</option>
-            <option value="4">Chinês 4</option>
+          <select value={decoder} onChange={(e) => setDecoder(e.target.value as any)}>
+            <option value="">Selecione um decodificador</option>
+            <option value="espaco">Dividido por espaço</option>
+            <option value="chines1">Chinês 1</option>
+            <option value="chines2">Chinês 2</option>
+            <option value="chines3">Chinês 3</option>
           </select>
           <select value={region?.server} onChange={(e) => {
             const selectedServer = e.target.value
@@ -70,11 +72,11 @@ const App: React.FunctionComponent = () => {
           id="final"
           spellCheck="false"
           readOnly={true}
-          value={str}
+          value={payload}
         />
         <button id="copy" onClick={() => {
-          if (str.length > 0) {
-            navigator.clipboard.writeText(str)
+          if (payload.length > 0) {
+            navigator.clipboard.writeText(payload)
           }
         }}>Copiar</button>
       </div>
