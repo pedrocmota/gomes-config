@@ -1,0 +1,90 @@
+[
+  {
+    "code": 0,
+    "name": "Eu West",
+    "servers": [
+      "Rethramis",
+      "Tortoyk",
+      "Moonkeep",
+      "Stonehearth",
+      "Shadespire",
+      "Tragon",
+      "Petrania",
+      "Punika"
+    ]
+  },
+  {
+    "code": 1,
+    "name": "Eu Central",
+    "servers": [
+      "Neria",
+      "Kadan",
+      "Trixion",
+      "Calvasus",
+      "Thirain",
+      "Zinnervale",
+      "Asta",
+      "Wei",
+      "Slen",
+      "Sceptrum",
+      "Procyon",
+      "Beatrice",
+      "Inanna",
+      "Thaemine",
+      "Sirius",
+      "Antares",
+      "Brelshaza",
+      "Nineveh",
+      "Mokoko"
+    ]
+  },
+  {
+    "code": 2,
+    "name": "USA West",
+    "servers": [
+      "Mari",
+      "Valtan",
+      "Enviska",
+      "Akkan",
+      "Bergstrom",
+      "Shandi",
+      "Rohendel"
+    ]
+  },
+  {
+    "code": 3,
+    "name": "USA East",
+    "servers": [
+      "Azena",
+      "Una",
+      "Regulus",
+      "Avesta",
+      "Galatur",
+      "Karta",
+      "Ladon",
+      "Kharmine",
+      "Elzowin",
+      "Sasha",
+      "Adrinne",
+      "Aldebaran",
+      "Zosma",
+      "Vykas",
+      "Danube"
+    ]
+  },
+  {
+    "code": 4,
+    "name": "SA",
+    "servers": [
+      "Kazeros",
+      "Agaton",
+      "Gienah",
+      "Arcturus",
+      "Yorn",
+      "Feiton",
+      "Vern",
+      "Kurzan",
+      "Prideholme"
+    ]
+  }
+]

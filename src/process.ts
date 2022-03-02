@@ -1,4 +1,5 @@
 import dedent from 'dedent'
+import {IRegion} from './App'
 
 interface IAccount {
   login: string,
@@ -80,15 +81,15 @@ export const china4 = (str: string) => {
   }
 }
 
-export const processData = (accounts: IAccount[], server: string, region: string, bank: string) => {
+export const processData = (accounts: IAccount[], region: IRegion | undefined, bank: string) => {
   let str = ''
   accounts.forEach((account) => {
     str += dedent(`
     {
       acc = "${account.login}";
       psw = "${account.password}";
-      regserver = ${region};
-      server = "${server}";
+      regserver = ${region?.code ?? 'NADA SELECIONADO'};
+      server = "${region?.server || 'NADA SELECIONADO'}";
       mailname = "${bank}";
       fin = 0;
     },
