@@ -16,6 +16,9 @@ export const Decoder = (raw: string, decoder: Decoders) => {
           if (decoder === 'espaco') {
             accounts.push(decoderEspaco(line))
           }
+          if (decoder === 'hifen') {
+            accounts.push(decoderHifen(line))
+          }
           if (decoder === 'chines1') {
             accounts.push(decoderChines1(line))
           }
@@ -53,6 +56,14 @@ export const GeneratePayload = (accounts: IAccount[], region: IRegion | undefine
 
 const decoderEspaco = (str: string) => {
   const parts = str.split(' ').filter((el) => el !== '')
+  return {
+    login: parts[0] || 'ERRO AO DECODIFICAR',
+    password: parts[1] || 'ERRO AO DECODIFICAR'
+  }
+}
+
+const decoderHifen = (str: string) => {
+  const parts = str.split('----').filter((el) => el !== '')
   return {
     login: parts[0] || 'ERRO AO DECODIFICAR',
     password: parts[1] || 'ERRO AO DECODIFICAR'

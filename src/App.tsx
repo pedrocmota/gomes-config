@@ -9,7 +9,7 @@ export interface IRegion {
   server: string
 }
 
-export type Decoders = '' | 'espaco' | 'chines1' | 'chines2' | 'chines3'
+export type Decoders = '' | 'espaco' | 'hifen' | 'chines1' | 'chines2' | 'chines3'
 
 const App: React.FunctionComponent = () => {
   const [raw, setRaw] = useState('')
@@ -32,6 +32,7 @@ const App: React.FunctionComponent = () => {
           <select value={decoder} onChange={(e) => setDecoder(e.target.value as any)}>
             <option value="">Selecione um decodificador</option>
             <option value="espaco">Dividido por espaço</option>
+            <option value="hifen">Dividido por hífen</option>
             <option value="chines1">Chinês 1</option>
             <option value="chines2">Chinês 2</option>
             <option value="chines3">Chinês 3</option>
