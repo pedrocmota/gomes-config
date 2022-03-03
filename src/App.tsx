@@ -10,15 +10,17 @@ export interface IRegion {
 }
 
 export type Decoders = '' | 'espaco' | 'hifen' | 'chines1' | 'chines2' | 'chines3'
+export type Formats = '' | 'config' | 'json'
 
 const App: React.FunctionComponent = () => {
   const [raw, setRaw] = useState('')
   const [decoder, setDecoder] = useState<Decoders>('')
   const [region, setRegion] = useState<IRegion>()
+  const [format, setFormat] = useState<Formats>('')
   const [bank, setBank] = useState('')
 
   const accounts = Decoder(raw, decoder)
-  const payload = GeneratePayload(accounts || [], region, bank)
+  const payload = GeneratePayload(accounts || [], region, bank, format)
   return (
     <SplitPane split="horizontal" minSize={50} defaultSize={300}>
       <div className="splitpanel">
@@ -59,6 +61,11 @@ const App: React.FunctionComponent = () => {
                 )
               })
             })}
+          </select>
+          <select value={format} onChange={(e) => setFormat(e.target.value as any)}>
+            <option value="">Selecione um formato</option>
+            <option value="config">Config (padrão do bot)</option>
+            <option value="json">JSON</option>
           </select>
           <input
             id="character"

@@ -1,5 +1,5 @@
 import dedent from 'dedent'
-import {IRegion, Decoders} from './App'
+import {IRegion, Decoders, Formats} from './App'
 
 interface IAccount {
   login: string,
@@ -37,19 +37,38 @@ export const Decoder = (raw: string, decoder: Decoders) => {
   }
 }
 
-export const GeneratePayload = (accounts: IAccount[], region: IRegion | undefined, bank: string) => {
+export const GeneratePayload = (
+  accounts: IAccount[],
+  region: IRegion | undefined,
+  bank: string,
+  format: Formats
+) => {
   let str = ''
   accounts.forEach((account) => {
-    str += dedent(`
-    {
-      acc = "${account.login}";
-      psw = "${account.password}";
-      regserver = ${region?.code ?? 'NADA SELECIONADO'};
-      server = "${region?.server || 'NADA SELECIONADO'}";
-      mailname = "${bank}";
-      fin = 0;
-    },
-    `) + ' '
+    if (format === 'config') {
+      str += dedent(`
+      {
+        acc = "${account.login}";
+        psw = "${account.password}";
+        regserver = ${region?.code ?? 'NADA SELECIONADO'};
+        server = "${region?.server || 'NADA SELECIONADO'}";
+        mailname = "${bank}";
+        fin = 0;
+      },
+      `) + ' '
+    }
+    if (format === 'json') {
+      str += dedent(`
+      {
+        "acc": "${account.login}",
+        "psw": "${account.password}",
+        "regserver": "${region?.code ?? 'NADA SELECIONADO'}",
+        "server": "${region?.server || 'NADA SELECIONADO'}",
+        "mailname": "${bank}",
+        "fin": 0
+      },
+      `) + ' '
+    }
   })
   return str
 }
