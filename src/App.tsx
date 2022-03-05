@@ -9,7 +9,7 @@ export interface IRegion {
   server: string
 }
 
-export type Decoders = '' | 'espaco' | 'hifen' | 'chines1' | 'chines2' | 'chines3'
+export type Decoders = '' | 'espaco' | 'hifen' | 'chines1' | 'chines2' | 'chines3' | 'chines4'
 export type Formats = '' | 'config' | 'json'
 
 const App: React.FunctionComponent = () => {
@@ -38,6 +38,7 @@ const App: React.FunctionComponent = () => {
             <option value="chines1">Chinês 1</option>
             <option value="chines2">Chinês 2</option>
             <option value="chines3">Chinês 3</option>
+            <option value="chines4">Chinês 4</option>
           </select>
           <select value={region?.server} onChange={(e) => {
             const selectedServer = e.target.value

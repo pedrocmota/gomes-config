@@ -28,6 +28,9 @@ export const Decoder = (raw: string, decoder: Decoders) => {
           if (decoder === 'chines3') {
             accounts.push(decoderChines3(line))
           }
+          if (decoder === 'chines4') {
+            accounts.push(decoderChines4(line))
+          }
         }
       })
     } catch (e) {
@@ -125,5 +128,14 @@ const decoderChines3 = (str: string) => {
   return {
     login: login || 'ERRO AO DECODIFICAR',
     password: password || 'ERRO AO DECODIFICAR'
+  }
+}
+
+const decoderChines4 = (str: string) => {
+  const sub = str.substring(3)
+  const array = sub.split('----')
+  return {
+    login: array[0] || 'ERRO AO DECODIFICAR',
+    password: array[1] || 'ERRO AO DECODIFICAR'
   }
 }
